@@ -1,8 +1,8 @@
 module RubyVoluum
+  API_URL = 'https://api.voluum.com'.freeze
+
   # basic class to that'll provide access to other API
   class Client
-    API_URL = 'https://api.voluum.com'.freeze
-
     attr_reader :token
 
     def initialize(email: nil, password: nil, access_key: nil)
@@ -18,6 +18,10 @@ module RubyVoluum
       @token = JSON.parse(response.body)['token']
     rescue RestClient::Unauthorized
       raise RubyVoluum::Exceptions::NotAuthorizedError
+    end
+
+    def report
+      RubyVoluum::Report.new
     end
   end
 end

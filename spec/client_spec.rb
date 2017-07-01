@@ -1,14 +1,14 @@
 RSpec.describe RubyVoluum::Client do
-  describe '#initialize' do
-    subject do
-      VCR.use_cassette('login_with_email') do
-        RubyVoluum::Client.new(email: 'good@good.com', password: '12345678')
-      end
+  let(:client) do
+    VCR.use_cassette('login_with_email') do
+      RubyVoluum::Client.new(email: 'good@good.com', password: '12345678')
     end
+  end
 
+  describe '#initialize' do
     context 'accepts' do
       it 'email&password' do
-        expect { subject }.not_to raise_error
+        expect { client }.not_to raise_error
       end
 
       xit 'access_key' do
@@ -23,11 +23,11 @@ RSpec.describe RubyVoluum::Client do
     context 'for email and password' do
       context 'valid' do
         it 'returns a RubyVoluum::Client instance' do
-          expect(subject).to be_instance_of RubyVoluum::Client
+          expect(client).to be_instance_of RubyVoluum::Client
         end
 
         it 'returned object responds to #token' do
-          expect(subject).to respond_to(:token)
+          expect(client).to respond_to(:token)
         end
       end
 
@@ -53,6 +53,14 @@ RSpec.describe RubyVoluum::Client do
       context 'invalid' do
         it 'raises NotAuthorizedError'
       end
+    end
+  end
+
+  describe '#report' do
+    subject { client.report }
+
+    it 'returns a RubyVoluum::Report collection' do
+      expect(subject).to be_instance_of RubyVoluum::Report
     end
   end
 end

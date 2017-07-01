@@ -1,4 +1,5 @@
-require 'ruby_voluum/version'
+require 'rest-client'
 
-module RubyVoluum
-end
+require 'ruby_voluum/version'
+require 'ruby_voluum/client'
+require 'ruby_voluum/exceptions'

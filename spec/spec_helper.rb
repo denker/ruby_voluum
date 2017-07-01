@@ -2,10 +2,12 @@ require 'bundler/setup'
 require 'ruby_voluum'
 require 'vcr'
 require 'webmock'
+require 'awesome_print'
 
 VCR.configure do |c|
-  c.cassette_library_dir = 'test/fixtures'
+  c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   c.hook_into :webmock
+  c.default_cassette_options = { record: :once }
 end
 
 RSpec.configure do |config|

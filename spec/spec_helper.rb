@@ -3,6 +3,7 @@ require 'ruby_voluum'
 require 'vcr'
 require 'webmock'
 require 'awesome_print'
+require 'timecop'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'

@@ -24,6 +24,41 @@ Or install it yourself as:
 
 ## Usage
 
+```
+client = RubyVoluum::Client.new(email: 'user@domain.com', password: 'yourpass')
+
+# report
+report = client.report(from: Date.today, to: Date.today + 1)
+
+report.totals
+# => {
+#   "advertiserCost"=>0.0,
+#   "ap"=>33.5,
+#   "bids"=>0,
+#   "clicks"=>459,
+#   "conversions"=>4,
+#   "cost"=>107.1316,
+#   "cpv"=>0.06269,
+#   "cr"=>0.87146,
+#   "ctr"=>26.85781,
+#   "cv"=>0.23406,
+#   "epc"=>0.29194,
+#   "epv"=>0.07841,
+#   "errors"=>0,
+#   "ictr"=>0.0,
+#   "impressions"=>0,
+#   "profit"=>26.8684,
+#   "revenue"=>134.0,
+#   "roi"=>25.07981,
+#   "visits"=>1709,
+#   "winRate"=>0.0
+# }
+report.rows #=> array of hashes
+report.rows[0] #=> hash of campaign with indicators
+```
+
+
+
 TODO: Write usage instructions here
 
 ## Development

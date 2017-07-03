@@ -59,6 +59,8 @@ module RubyVoluum
           headers: headers(query)
         )
       )
+    rescue JSON::ParserError
+      nil
     end
 
     def headers(query = {})

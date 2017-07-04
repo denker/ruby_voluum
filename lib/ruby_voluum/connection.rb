@@ -6,7 +6,10 @@ module RubyVoluum
       @email     = email
       @password  = password
       @token     = token
-      @expire_at = @token ? Time.now.utc : nil
+      # Voluum token lives 4 hours after last used. Suppose it was used
+      # recently to give it a try. If it's not valid anymore, the script
+      # get a new one in authenticate! method.
+      @expire_at = @token ? (Time.now.utc + 4 * 86_400) : nil
     end
 
     def get(path, query = {})

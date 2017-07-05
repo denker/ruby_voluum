@@ -32,7 +32,7 @@ module RubyVoluum
       params[:to]   = to_rounded_s(params[:to] || Time.now.utc)
       params[:cost] = params[:cost].to_f
       params[:timezone] ||= 'UTC'
-      params[:campaignId] = params.delete(:campaign_id)
+      params[:campaignId] ||= params.delete(:campaign_id)
       @connection.post('report/manual-cost', params)
     end
 
@@ -45,7 +45,8 @@ module RubyVoluum
     def query
       { limit:    @limit,
         groupBy:  @group_by,
-        timezone: @timezone,
+        tz:       @timezone,
+        include:  @include,
         from:     to_rounded_s(@from),
         to:       to_rounded_s(@to) }
     end

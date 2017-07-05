@@ -14,5 +14,9 @@ module RubyVoluum
     def report(options = {})
       Report.new(options, @connection)
     end
+
+    def miscellaneous
+      Miscellaneous.new(@connection)
+    end
   end
 end

@@ -24,8 +24,8 @@ module RubyVoluum
       authenticatable_request(:put, path, payload)
     end
 
-    def delete(path)
-      authenticatable_request(:delete, path)
+    def delete(path, payload)
+      authenticatable_request(:delete, path, payload)
     end
 
     def authenticate!

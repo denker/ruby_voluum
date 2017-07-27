@@ -11,6 +11,18 @@ module RubyVoluum
       Campaign.new(@connection)
     end
 
+    def lander
+      Lander.new(@connection)
+    end
+
+    def offer
+      Offer.new(@connection)
+    end
+
+    def traffic_source
+      TrafficSource.new(@connection)
+    end
+
     def report(options = {})
       Report.new(options, @connection)
     end

@@ -1,4 +1,4 @@
 module RubyVoluum
-  class Campaign < Entity
+  class Lander < Entity
   end
 end

@@ -8,7 +8,7 @@ module RubyVoluum
         request_info = "#{request.method.upcase} #{request.url}"
         response_info = result.code.to_s
 
-        if ('200'..'299').exclude?(result.code)
+        unless ('200'..'299').include?(result.code)
           response_message = result.message
           description = error_description(response)
           response_message << ": #{description}" if description
@@ -20,7 +20,9 @@ module RubyVoluum
         File.open(log_file_path, 'a') { |f| f.write "#{message}\n" } if log_file_path
 
         message = "  VoluumClient: #{message}"
-        message = ('200'..'299').cover?(result.code) ? message.green : message.red
+        if message.respond_to?(:green)
+          message = ('200'..'299').cover?(result.code) ? message.green : message.red
+        end
         puts message
       end
 

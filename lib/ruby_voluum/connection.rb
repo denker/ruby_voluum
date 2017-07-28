@@ -60,7 +60,10 @@ module RubyVoluum
           method:  method,
           payload: payload.to_json,
           headers: headers(query)
-        )
+        ) do |response, request, result|
+          Logger.log(response, request, result)
+          response
+        end
       )
     rescue JSON::ParserError
       nil

@@ -1,6 +1,6 @@
 module RubyVoluum
   class Entity
-    HANDLED_ENTITIES = %w(campaign lander offer traffic-source).freeze
+    HANDLED_ENTITIES = %w(campaign lander offer traffic-source affiliate-network).freeze
 
     def initialize(connection)
       raise "#{entity_name} is not suppo" unless HANDLED_ENTITIES.include?(entity_name)
@@ -8,7 +8,7 @@ module RubyVoluum
     end
 
     def all(params = {})
-      @connection.get(entity_name, params)["#{entity_name}s"]
+      @connection.get(entity_name, params).values.first
     end
 
     def find(id:)

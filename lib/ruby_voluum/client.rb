@@ -23,6 +23,10 @@ module RubyVoluum
       TrafficSource.new(@connection)
     end
 
+    def affiliate_network
+      AffiliateNetwork.new(@connection)
+    end
+
     def report(options = {})
       Report.new(options, @connection)
     end

@@ -62,6 +62,7 @@ module RubyVoluum
           headers: headers(query)
         ) do |response, request, result|
           Logger.log(response, request, result)
+          raise RestClient::Unauthorized if result.code_type == Net::HTTPUnauthorized
           response
         end
       )

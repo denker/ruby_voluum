@@ -20,7 +20,7 @@ module RubyVoluum
     end
 
     def create(data:)
-      @connection.put(entity_name, data)
+      @connection.post(entity_name, data)
     end
 
     def delete(ids)

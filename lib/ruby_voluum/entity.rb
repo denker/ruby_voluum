@@ -3,7 +3,7 @@ module RubyVoluum
     HANDLED_ENTITIES = %w(campaign lander offer traffic-source affiliate-network).freeze
 
     def initialize(connection)
-      raise "#{entity_name} is not suppo" unless HANDLED_ENTITIES.include?(entity_name)
+      raise "#{entity_name} is not suppoted" unless HANDLED_ENTITIES.include?(entity_name)
       @connection = connection
     end
 

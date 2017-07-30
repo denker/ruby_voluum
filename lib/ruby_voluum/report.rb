@@ -8,6 +8,7 @@ module RubyVoluum
       @include    = options[:include]  || 'active'
       @timezone   = options[:timezone] || 'Europe/Berlin'
       @limit      = options[:limit]    || 1000
+      @filter     = options[:filter]
       @totals     = nil
       @rows       = nil
     end
@@ -48,7 +49,8 @@ module RubyVoluum
         tz:       @timezone,
         include:  @include,
         from:     to_rounded_s(@from),
-        to:       to_rounded_s(@to) }
+        to:       to_rounded_s(@to),
+        filter:   @filter }
     end
 
     def to_rounded_s(value)

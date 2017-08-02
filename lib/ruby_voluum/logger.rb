@@ -2,6 +2,7 @@ module RubyVoluum
   class Logger
     class << self
       attr_accessor :log_file_path
+      attr_accessor :write_to_console
 
       def log(response, request, result)
         request_date = DateTime.now.strftime('%d-%m-%Y %H:%M')
@@ -18,6 +19,8 @@ module RubyVoluum
         message = "[#{request_date}] -- \"#{request_info}\" | #{response_info}"
 
         File.open(log_file_path, 'a') { |f| f.write "#{message}\n" } if log_file_path
+
+        return unless write_to_console == true
 
         message = "  VoluumClient: #{message}"
         if message.respond_to?(:green)
